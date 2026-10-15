@@ -30,11 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pnlAuth = new System.Windows.Forms.Panel();
-            this.lblStoreTitle = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnGuestMode = new System.Windows.Forms.Button();
-            this.btnGotoRegister = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbUserRole = new System.Windows.Forms.ComboBox();
@@ -43,13 +40,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblStoreTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lnkForgotPassword = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnGotoRegister = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlAuth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlAuth
@@ -57,9 +58,6 @@
             this.pnlAuth.BackColor = System.Drawing.Color.Tan;
             this.pnlAuth.Controls.Add(this.label5);
             this.pnlAuth.Controls.Add(this.btnGuestMode);
-            this.pnlAuth.Controls.Add(this.btnGotoRegister);
-            this.pnlAuth.Controls.Add(this.label4);
-            this.pnlAuth.Controls.Add(this.btnLogin);
             this.pnlAuth.Controls.Add(this.label3);
             this.pnlAuth.Controls.Add(this.cmbUserRole);
             this.pnlAuth.Controls.Add(this.label2);
@@ -74,18 +72,6 @@
             this.pnlAuth.Size = new System.Drawing.Size(1004, 497);
             this.pnlAuth.TabIndex = 1;
             this.pnlAuth.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlAuth_Paint);
-            // 
-            // lblStoreTitle
-            // 
-            this.lblStoreTitle.AutoSize = true;
-            this.lblStoreTitle.Font = new System.Drawing.Font("Showcard Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStoreTitle.Location = new System.Drawing.Point(278, 45);
-            this.lblStoreTitle.Name = "lblStoreTitle";
-            this.lblStoreTitle.Size = new System.Drawing.Size(462, 50);
-            this.lblStoreTitle.TabIndex = 11;
-            this.lblStoreTitle.Text = "HOP Clothing Store";
-            this.lblStoreTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblStoreTitle.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -112,35 +98,10 @@
             this.btnGuestMode.UseVisualStyleBackColor = false;
             this.btnGuestMode.Click += new System.EventHandler(this.btnGuestMode_Click);
             // 
-            // btnGotoRegister
-            // 
-            this.btnGotoRegister.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGotoRegister.FlatAppearance.BorderSize = 0;
-            this.btnGotoRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGotoRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGotoRegister.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnGotoRegister.Location = new System.Drawing.Point(715, 389);
-            this.btnGotoRegister.Name = "btnGotoRegister";
-            this.btnGotoRegister.Size = new System.Drawing.Size(125, 30);
-            this.btnGotoRegister.TabIndex = 8;
-            this.btnGotoRegister.Text = "Create Account";
-            this.btnGotoRegister.UseVisualStyleBackColor = false;
-            this.btnGotoRegister.Click += new System.EventHandler(this.btnGotoRegister_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(590, 396);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "No account yet?";
-            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLogin.Location = new System.Drawing.Point(669, 335);
+            this.btnLogin.Location = new System.Drawing.Point(242, 220);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(84, 31);
             this.btnLogin.TabIndex = 6;
@@ -222,24 +183,41 @@
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
+            // lblStoreTitle
             // 
-            this.pictureBox1.Image = global::PTOF.Properties.Resources.download;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1540, 842);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.lblStoreTitle.AutoSize = true;
+            this.lblStoreTitle.Font = new System.Drawing.Font("Showcard Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStoreTitle.Location = new System.Drawing.Point(278, 45);
+            this.lblStoreTitle.Name = "lblStoreTitle";
+            this.lblStoreTitle.Size = new System.Drawing.Size(462, 50);
+            this.lblStoreTitle.TabIndex = 11;
+            this.lblStoreTitle.Text = "HOP Clothing Store";
+            this.lblStoreTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblStoreTitle.Click += new System.EventHandler(this.label6_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.lnkForgotPassword);
             this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.btnLogin);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.btnGotoRegister);
             this.panel1.Location = new System.Drawing.Point(422, 135);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(528, 342);
             this.panel1.TabIndex = 13;
+            // 
+            // lnkForgotPassword
+            // 
+            this.lnkForgotPassword.AutoSize = true;
+            this.lnkForgotPassword.Location = new System.Drawing.Point(226, 192);
+            this.lnkForgotPassword.Name = "lnkForgotPassword";
+            this.lnkForgotPassword.Size = new System.Drawing.Size(116, 16);
+            this.lnkForgotPassword.TabIndex = 9;
+            this.lnkForgotPassword.TabStop = true;
+            this.lnkForgotPassword.Text = "Forgot Password?";
+            this.lnkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkForgotPassword_LinkClicked);
             // 
             // label6
             // 
@@ -250,6 +228,42 @@
             this.label6.Size = new System.Drawing.Size(129, 24);
             this.label6.TabIndex = 0;
             this.label6.Text = "CREDENTIALS";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(148, 274);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "No account yet?";
+            // 
+            // btnGotoRegister
+            // 
+            this.btnGotoRegister.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGotoRegister.FlatAppearance.BorderSize = 0;
+            this.btnGotoRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGotoRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGotoRegister.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnGotoRegister.Location = new System.Drawing.Point(295, 267);
+            this.btnGotoRegister.Name = "btnGotoRegister";
+            this.btnGotoRegister.Size = new System.Drawing.Size(125, 30);
+            this.btnGotoRegister.TabIndex = 8;
+            this.btnGotoRegister.Text = "Create Account";
+            this.btnGotoRegister.UseVisualStyleBackColor = false;
+            this.btnGotoRegister.Click += new System.EventHandler(this.btnGotoRegister_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PTOF.Properties.Resources.download;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1540, 842);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form1
             // 
@@ -266,9 +280,9 @@
             this.pnlAuth.ResumeLayout(false);
             this.pnlAuth.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,6 +306,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.LinkLabel lnkForgotPassword;
     }
 }
 

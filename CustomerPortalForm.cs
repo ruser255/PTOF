@@ -9,6 +9,7 @@ using System.Windows.Forms;
 namespace PTOF
 {
     public partial class CustomerPortalForm : Form
+    
     {
         private Panel sidePanel;
         private TabControl customerTabControl;

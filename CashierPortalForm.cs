@@ -10,6 +10,7 @@ using System.Windows.Forms;
 namespace PTOF
 {
     public partial class CashierPortalForm : Form
+    
     {
         private Panel sidePanel;
         private TabControl cashierTabControl;
@@ -1138,7 +1139,6 @@ namespace PTOF
                 MessageBox.Show("There are no items in the cart.", "Empty Cart", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             decimal grossTotal = 0;
             string currSymbol = GetCurrencySymbol();
             foreach (DataGridViewRow row in dgvCart.Rows)
@@ -1152,14 +1152,11 @@ namespace PTOF
                     }
                 }
             }
-
             decimal discount = 0;
             decimal.TryParse(txtDiscount.Text, out discount);
-
             decimal totalAmount = grossTotal;
             decimal tax = 0;
             decimal grandTotal = 0;
-
             if (discount > 0)
             {
                 totalAmount = grossTotal / 1.12m; 
@@ -1171,22 +1168,17 @@ namespace PTOF
                 tax = totalAmount * 0.12m;   
                 grandTotal = totalAmount + tax;
             }
-
             decimal amountReceived = 0;
             decimal.TryParse(txtAmountReceived.Text, out amountReceived);
-
             string paymentMethod = cmbPaymentMethod.SelectedItem?.ToString() ?? "Cash";
-
             if (paymentMethod.Contains("GCash") || paymentMethod.Contains("PayMaya") || paymentMethod.Contains("GoTyme"))
             {
                 string walletName = paymentMethod.Contains("GCash") ? "GCash" : (paymentMethod.Contains("PayMaya") ? "PayMaya" : "GoTyme");
-
                 bool confirmed = ProcessEWalletPayment(walletName, grandTotal);
                 if (!confirmed)
                 {
                     return; 
                 }
-
                 amountReceived = grandTotal;
             }
             else if (amountReceived < grandTotal && paymentMethod == "Cash")
@@ -1194,7 +1186,6 @@ namespace PTOF
                 MessageBox.Show("Insufficient payment received.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             string currentStoreName = "PTOF STORE";
             try
             {
@@ -1213,18 +1204,14 @@ namespace PTOF
                 }
             }
             catch { }
-
             string transId = "TRX-" + DateTime.Now.ToString("yyyyMMddHHmmss");
             string orderId = "ORD-" + DateTime.Now.ToString("mmss");
             string dateTimeNow = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt");
-
             System.Text.StringBuilder sbReceipt = new System.Text.StringBuilder();
             sbReceipt.AppendLine("====================================");
-
             int totalWidth = 33;
             int leftPadding = Math.Max(0, (totalWidth - currentStoreName.Length) / 2);
             sbReceipt.AppendLine(currentStoreName.PadLeft(leftPadding + currentStoreName.Length).PadRight(totalWidth));
-
             sbReceipt.AppendLine("====================================");
             sbReceipt.AppendLine($"Trans ID: {transId}");
             sbReceipt.AppendLine($"Date: {dateTimeNow}");
@@ -1233,10 +1220,8 @@ namespace PTOF
             if (appliedDiscountInfo != "None")
                 sbReceipt.AppendLine($"Customer Info: {appliedDiscountInfo}");
             sbReceipt.AppendLine("------------------------------------");
-
             sbReceipt.AppendLine(string.Format("{0,-13} {1,3} {2,8} {3,8}", "Item", "Qty", "Price", "Total"));
             sbReceipt.AppendLine("------------------------------------");
-
             try
             {
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
@@ -1250,23 +1235,16 @@ namespace PTOF
                             foreach (DataGridViewRow row in dgvCart.Rows)
                             {
                                 if (row.Cells["ProdID"].Value == null) continue;
-
                                 string pId = row.Cells["ProdID"].Value.ToString();
                                 string pName = row.Cells["ProdName"].Value?.ToString() ?? "";
                                 int qty = Convert.ToInt32(row.Cells["Quantity"].Value);
-
-                                
                                 string cleanPrice = row.Cells["Price"].Value?.ToString().Replace(currSymbol, "").Replace("₱", "").Replace(",", "").Trim() ?? "0";
                                 string cleanTotal = row.Cells["Total"].Value?.ToString().Replace(currSymbol, "").Replace("₱", "").Replace(",", "").Trim() ?? "0";
-
                                 decimal.TryParse(cleanPrice, out decimal price);
                                 decimal.TryParse(cleanTotal, out decimal tot);
-
                                 itemsSummary += $"{pName} (x{qty}), ";
-
                                 string truncatedName = pName.Length > 13 ? pName.Substring(0, 13) : pName;
                                 sbReceipt.AppendLine(string.Format("{0,-13} {1,3} {2,8:N2} {3,8:N2}", truncatedName, qty, price, tot));
-
                                 string updateStock = "UPDATE Products SET Stock = CAST(Stock AS INTEGER) - @qty WHERE ProdID = @prodId";
                                 using (SQLiteCommand cmdStock = new SQLiteCommand(updateStock, conn, sqliteTrans))
                                 {
@@ -1275,7 +1253,6 @@ namespace PTOF
                                     cmdStock.ExecuteNonQuery();
                                 }
                             }
-
                             string insertTrans = "INSERT INTO Transactions (TransID, TransOrderID, TransDateTime, TransCustomer, TransStaff, TransItems, TransTotal, TransMethod, TransPayStatus, TransStatus) VALUES (@transId, @orderId, @dateTime, @customer, @staff, @items, @total, @method, @payStatus, @status)";
                             using (SQLiteCommand cmdTrans = new SQLiteCommand(insertTrans, conn, sqliteTrans))
                             {

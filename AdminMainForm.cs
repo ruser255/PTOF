@@ -13,6 +13,7 @@ using Point = System.Drawing.Point;
 namespace PTOF
 {
     public partial class AdminMainForm : Form
+
     {
         private Label lblHeader;
         private Label lblPrefTitle;
@@ -686,7 +687,7 @@ namespace PTOF
             Label lblPanelTitle = new Label() { Text = "Approval Actions", Location = new Point(20, 20), Font = new Font("Segoe UI", 12, FontStyle.Bold), AutoSize = true };
             actionPanel.Controls.Add(lblPanelTitle);
 
-            Label lblSelectedInfo = new Label() { Text = "Pumili ng return request mula sa listahan.", Location = new Point(20, 60), Size = new Size(260, 50), Font = new Font("Segoe UI", 9), ForeColor = Color.DimGray };
+            Label lblSelectedInfo = new Label() { Text = "Choose a return request.", Location = new Point(20, 60), Size = new Size(260, 50), Font = new Font("Segoe UI", 9), ForeColor = Color.DimGray };
             actionPanel.Controls.Add(lblSelectedInfo);
 
             Button btnApprove = new Button() { Text = "Approve Refund", Location = new Point(20, 130), Size = new Size(260, 40), BackColor = Color.FromArgb(40, 167, 69), ForeColor = Color.White, FlatStyle = FlatStyle.Flat };
@@ -709,7 +710,7 @@ namespace PTOF
             btnApprove.Click += (s, e) => {
                 if (string.IsNullOrEmpty(selectedReturnId))
                 {
-                    MessageBox.Show("Mangyaring pumili muna ng return request.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Choose a return request.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -726,13 +727,13 @@ namespace PTOF
 
                 dgvReturns.Rows.Clear();
                 LoadAdminReturnsData(dgvReturns);
-                MessageBox.Show("Tagumpay na na-approve ang refund request!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Return request approved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
 
             btnReject.Click += (s, e) => {
                 if (string.IsNullOrEmpty(selectedReturnId))
                 {
-                    MessageBox.Show("Mangyaring pumili muna ng return request.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Choose a return request.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -749,7 +750,7 @@ namespace PTOF
 
                 dgvReturns.Rows.Clear();
                 LoadAdminReturnsData(dgvReturns);
-                MessageBox.Show("Ang refund request ay tinanggihan (Rejected).", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Return request rejected successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
         }
 
